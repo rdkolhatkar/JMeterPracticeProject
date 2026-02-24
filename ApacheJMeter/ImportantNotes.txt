@@ -1,0 +1,7 @@
+Install Apache JMeter
+1) Open the Jmeter Official download page 'https://jmeter.apache.org/download_jmeter.cgi'
+2) Under “Binaries” section click the ZIP or TGZ link
+3) Download the "apache-jmeter-5.6.3.zip"
+4) Extract the Zip file "apache-jmeter-5.6.3.zip"
+5) Navigate To "/apache-jmeter-5.6.3/apache-jmeter-5.6.3/bin" and double-click on "ApacheJMeter" executable JAR (Java ARchive) file.
+6) It will Open the ApacheJMeter GUI.
