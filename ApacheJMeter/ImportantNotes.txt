@@ -5,3 +5,39 @@ Install Apache JMeter
 4) Extract the Zip file "apache-jmeter-5.6.3.zip"
 5) Navigate To "/apache-jmeter-5.6.3/apache-jmeter-5.6.3/bin" and double-click on "ApacheJMeter" executable JAR (Java ARchive) file.
 6) It will Open the ApacheJMeter GUI.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Create Test in JMeter
+1) Open the JMeter Graphical User Interface (GUI) 
+2) Right click on the "Test Plan" Option (Refer the Image '01_BasicJMeterSetUp' from 'ApacheJMeter\ImportantImages\BasicJMeterSetUp\01_BasicJMeterSetUp.PNG')
+3) Navigate to "Test Plan" -> "Add" -> "Non-Test Elements" -> "HTTP(s) Test Script Recorder" (Refer the Image '02_BasicJMeterSetUp' from 'ApacheJMeter\ImportantImages\BasicJMeterSetUp\02_BasicJMeterSetUp.PNG')
+4) Click on the "HTTP(s) Test Script Recorder" then it will open the WorkBench for recording test scripts (Refer the Image '03_BasicJMeterSetUp' from 'ApacheJMeter\ImportantImages\BasicJMeterSetUp\03_BasicJMeterSetUp.PNG')
+5) Now click on the "Test Controller" Option and select the "Test Plan > HTTP(s) Test Script Recorder" Option from dropdown (Refer the Image '04_BasicJMeterSetUp' from 'ApacheJMeter\ImportantImages\BasicJMeterSetUp\04_BasicJMeterSetUp.PNG')
+6) Then click on "Requests Filtering" (Refer the Image '05_BasicJMeterSetUp' from 'ApacheJMeter\ImportantImages\BasicJMeterSetUp\05_BasicJMeterSetUp.PNG')
+7) Navigate to "URL Patterns To Exclude" and then click on "Add Suggested Excludes" (Refer the Image '06_BasicJMeterSetUp' from 'ApacheJMeter\ImportantImages\BasicJMeterSetUp\06_BasicJMeterSetUp.PNG')
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FireFox Browser SetUp 
+1) Download and Install FireFox Browser from their official downloads page "https://www.firefox.com/en-US/?utm_campaign=SET_DEFAULT_BROWSER"
+2) Open the FireFox Browser and click on "open application menu"
+3) Navigate to Settings -> General -> Network Settings -> Open the Network Settings Tab -> Connection Settings
+4) After opening the "Connection Settings" click on "Manual proxy configuration" radio button
+5) Set Http and Https proxy as "127.0.0.1" and port as "8888" 
+6) Prot number of Http and Https proxy should be same as that of JMeter port. Default: 8888
+7) Once the proxy SetUp is done then Firefox browser will not work properly unless we start the JMeter recording
+8) With default Jmeter configuration we can access the "http" requests but for "https" we need to configure the trusted certificate from Jmeter
+9) To setup the certificate start the recrding on JMeter then we will receive message saying that "Root CA certificate ApacheJMeterTemporaryRootCA created in JMeter bin directory"
+10) Then We have to install that certificate in the FireFox Browser.
+11) Navigate to Settings -> Privacy & Security -> Certificates -> View Certificates -> Certificate Manager
+12) Click on Import Certificate From location: D:\JMeterPracticeProject\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin 
+13) Then you will be navigated to a pop-up where you have to click on all check boxes for Trusting this JMeter Certificate
+14) Click on OK button after you enable all check boxes and now Firefox setup is ready.
+15) Refer the FireFox SetUp images from folder "ApacheJMeter\ImportantImages\FirefoxBrowserSetUp"
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Start the JMeter recording
+1) After FireFox SetUp is completed, Go to JMeter GUI
+2) Go To "HTTP(S) Test Script Recorder" and click on start recording.
+3) Then Go to the FireFox browser and hit the URL on FireFox Browser.
+4) "https://blazedemo.com" go to this Website.
+5) Click on the "Choose your departure city" dropdown and select "Boston"
+6) Then Click on the "Choose your destination city" dropdown and select "London"
+7) Then click on "Find Flight" button
+8) Now all these actions would be recorded into the JMeter (Refer Image : )
