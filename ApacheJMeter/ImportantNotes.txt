@@ -32,7 +32,7 @@ FireFox Browser SetUp
 14) Click on OK button after you enable all check boxes and now Firefox setup is ready.
 15) Refer the FireFox SetUp images from folder "ApacheJMeter\ImportantImages\FirefoxBrowserSetUp"
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Start the JMeter recording
+Start the JMeter recording in FireFox Browser
 1) After FireFox SetUp is completed, Go to JMeter GUI
 2) Go To "HTTP(S) Test Script Recorder" and click on start recording.
 3) Then Go to the FireFox browser and hit the URL on FireFox Browser.
@@ -40,4 +40,13 @@ Start the JMeter recording
 5) Click on the "Choose your departure city" dropdown and select "Boston"
 6) Then Click on the "Choose your destination city" dropdown and select "London"
 7) Then click on "Find Flight" button
-8) Now all these actions would be recorded into the JMeter (Refer Image : )
+8) Now all these actions would be recorded into the JMeter (Refer Images from : ApacheJMeter\ImportantImages\BasicJMeterSetUp)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chrome Browser SetUp with BlazeMeter Plugin
+1) Open the Google Chrome and search for "BlazeMeter plugin" in the search bar 
+2) Click on the first link and it will show you the extension inside the "Chrome Web Store"
+3) Click on the "add chrome extension" button and it will install the BlazeMeter into the Chrome Browser. 
+4) After that click on the "BlazeMeter" icon and cleck on "Sign Up button"
+5) Enter first name, last name, email and complete the account creation process, after which you will be navigated to the Home page of BlazeMeter
+6) Restart your Chrome Browser and click on plugins option there you will see the Blazemeter plugin, pin that to Chrome titlebar
+7) 
