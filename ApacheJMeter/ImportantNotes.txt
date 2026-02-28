@@ -49,4 +49,17 @@ Chrome Browser SetUp with BlazeMeter Plugin
 4) After that click on the "BlazeMeter" icon and cleck on "Sign Up button"
 5) Enter first name, last name, email and complete the account creation process, after which you will be navigated to the Home page of BlazeMeter
 6) Restart your Chrome Browser and click on plugins option there you will see the Blazemeter plugin, pin that to Chrome titlebar
-7) 
+7) Click on the BlazeMeter plugin on chrome title bar and click on red button to start recording. 
+8) After recording is started, open new tab and navigate to the "https://blazedemo.com"
+9) Click on the "Choose your departure city" dropdown and select "Boston"
+10) Then Click on the "Choose your destination city" dropdown and select "London"
+11) Then click on "Find Flight" button.
+12) Now all these actions would be recorded into the BlazeMeter and from there you can download the ".jmx" file
+13) Now import that .jmx file into JMeter WorkBench.
+14) Click on File -> Open -> demo.jmx this flow woll open your .jmx file into the JMeter. 
+15) Click on "Thread Group" and then click on "Test" there you will see all the recorded scripts. 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Creating the Thread Group
+1) Right click on the "Test Plan" and Navigate to 'Add' -> 'Threads (Users)' -> 'Thread Group'
+2) Set the 'Thread Properties' like 'Number of Threads (Users)', 'Ramp Up Period (Seconds)' or Duration
+3) Then move (Cut + Paste) your ".jmx" files from 'HTTP(s) Test Script Recorder' to 'Thread Group'
