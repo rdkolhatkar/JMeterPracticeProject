@@ -63,3 +63,8 @@ Creating the Thread Group
 1) Right click on the "Test Plan" and Navigate to 'Add' -> 'Threads (Users)' -> 'Thread Group'
 2) Set the 'Thread Properties' like 'Number of Threads (Users)', 'Ramp Up Period (Seconds)' or Duration
 3) Then move (Cut + Paste) your ".jmx" files from 'HTTP(s) Test Script Recorder' to 'Thread Group'
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Adding Listeners to view and record the load testing results
+Note: Listeners in JMeter are used to collect, display and store performance test results. They provide metrics such as response time, throughput, error rate and latency. During script development we use View Results Tree for debugging, but during actual load execution we remove heavy listeners and use Simple Data Writer to store results for later analysis.
+1) Right Click on 'Test Plan' -> 'Add' -> 'Listener' -> {1) View Results Tree 2) Aggregate Report 3) Graph Results}
+
