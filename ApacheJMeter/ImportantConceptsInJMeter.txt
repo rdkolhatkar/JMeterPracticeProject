@@ -1,3 +1,4 @@
+Aggregate Report Parameters : 
 1) Samples : It is a total number of users who hit the API or Service. 
 2) Average : Average time taken by all the samples to execute specific label. That means if there are 100 api requests, then for each request there will be specific response time, so it is the average of all individual sample response time in MilliSeconds. 
 3) Min: Minimum time taken by user to get the response back from the API or Service. 
@@ -5,4 +6,6 @@
 5) Error: Percentage of Failed requests per label. 
 6) Standard Deviation: This shows the set of exceptional cases which were deviating from the average value of sample response time. The lesser this value more consistent the data. Standard deviation should be less than or equal to half of average time for a label.
 7) Throughput: It is the number of request that are processed per time unit(seconds, minutes, hours) by the server. This time is calculated from the start of first sample to the end of the last sample. Larger throughput is better. 
-                        
+8) 90% Line : 90% of the samples took no more than this time. The remaining samples took at least as long as this. (90th percentile)
+9) Median : It is the time in the middle of a set of samples result. It indicates that 50% of the samples took no more than this time. That is the remainder took at least as long.                         
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
