@@ -70,4 +70,12 @@ Note: Listeners in JMeter are used to collect, display and store performance tes
 2) Run the JMeter test by providing the appropriate values of Number of Thread, RampUp period and duration of seconds etc. 
 3) View the results by clicing on  {1) View Results Tree 2) Aggregate Report 3) Graph Results}
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Download and Install External Jmeter Plugins 
+1) To download JMeter plugins go to their official Plugin Manager WebSite : https://jmeter-plugins.org/wiki/PluginsManager/
+2) To download and install plugins we have to connect the JMeter with JMeter Plugin manager Website
+3) To connect JMeter with Plugin Manager we have to first Download the Plugin Manager jar file 
+4) Save that downloaded jar into Apache JMeter's "lib/ext" directory and then restart the JMeter app
+5) After restarting the JMeter you will see the "Plugin Manager" option under the "Options" menu on Tool Bar. 
+6) After clicking on plugin manager it will open separate window then on that window click on "Available Plugins" tab and then in the search box you can search any plugin you want. 
+7) Select the checkbox of the Plugin which you want to install and then click on "Apply and Restart" button, it will restart JMeter app. 
 
