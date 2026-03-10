@@ -1,0 +1,2 @@
+1) Basic Load Testing: https://blazedemo.com/
+2) Cookie Manager / Login Test: https://the-internet.herokuapp.com/login

@@ -78,4 +78,5 @@ Download and Install External Jmeter Plugins
 5) After restarting the JMeter you will see the "Plugin Manager" option under the "Options" menu on Tool Bar. 
 6) After clicking on plugin manager it will open separate window then on that window click on "Available Plugins" tab and then in the search box you can search any plugin you want. 
 7) Select the checkbox of the Plugin which you want to install and then click on "Apply and Restart" button, it will restart JMeter app. 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

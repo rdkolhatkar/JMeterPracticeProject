@@ -9,3 +9,11 @@ Aggregate Report Parameters :
 8) 90% Line : 90% of the samples took no more than this time. The remaining samples took at least as long as this. (90th percentile)
 9) Median : It is the time in the middle of a set of samples result. It indicates that 50% of the samples took no more than this time. That is the remainder took at least as long.                         
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A session cookie is a small piece of data stored in the browser to remember a user while they are using a website.
+1) When you log in to a website, the server creates a session and sends a session cookie to your browser.
+2) The browser stores this cookie temporarily and sends it back to the server with every request.
+3) This helps the server recognize that the requests are coming from the same logged-in user.
+4) Session cookies usually exist only while the browser is open.
+5) When you close the browser or log out, the session cookie is usually deleted.
+
+
