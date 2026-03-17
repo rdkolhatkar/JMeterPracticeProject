@@ -79,4 +79,5 @@ Download and Install External Jmeter Plugins
 6) After clicking on plugin manager it will open separate window then on that window click on "Available Plugins" tab and then in the search box you can search any plugin you want. 
 7) Select the checkbox of the Plugin which you want to install and then click on "Apply and Restart" button, it will restart JMeter app. 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+JMeter Controllers
+1) JMeter controller is nothing but a container where we will store all your requests, it's a folder where we will save all our HTTP requests
