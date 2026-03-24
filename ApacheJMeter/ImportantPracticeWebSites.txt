@@ -1,2 +1,143 @@
 1) Basic Load Testing: https://blazedemo.com/
 2) Cookie Manager / Login Test: https://the-internet.herokuapp.com/login
+-----------------------------------------------------------------------------------------------------------------------------
+DUMMY WEBSITES FOR JMETER LOAD TESTING
+
+1. BlazeDemo
+   URL: http://blazedemo.com/
+   Use Case: Flight booking simulation
+   Details:
+
+* Simple end-to-end flow (search → select → purchase)
+* Best for beginners
+* Helps understand basic JMeter components like Thread Group, Samplers, and Listeners
+
+---
+
+2. OrangeHRM Demo
+   URL: https://opensource-demo.orangehrmlive.com/
+   Username: Admin
+   Password: admin123
+   Use Case: Login, dashboard navigation, form submission
+   Details:
+
+* Real-world enterprise application
+* Useful for practicing session handling, parameterization, and correlation
+
+---
+
+3. SauceDemo
+   URL: https://www.saucedemo.com/
+   Username: standard_user
+   Password: secret_sauce
+   Use Case: E-commerce flow (login → add to cart → checkout)
+   Details:
+
+* Great for transaction-based testing
+* Helps practice assertions and data handling
+
+---
+
+4. The Internet (Herokuapp)
+   URL: https://the-internet.herokuapp.com/
+   Use Case: Multiple testing scenarios (authentication, file upload, dynamic content)
+   Details:
+
+* Contains many independent modules for testing
+* Useful for advanced scripting and handling dynamic elements
+
+---
+
+5. Restful Booker
+   URL: https://restful-booker.herokuapp.com/
+   Use Case: API testing (GET, POST, PUT, DELETE)
+   Details:
+
+* Ideal for API load testing
+* Supports authentication and token-based requests
+* Good for practicing JSON extraction and validation
+
+---
+
+6. Dummy Ticket
+   URL: https://www.dummyticket.com/
+   Use Case: Form submission, dropdowns, calendar handling
+   Details:
+
+* Realistic booking form
+* Useful for handling complex UI elements like date pickers and dropdowns
+
+---
+
+IMPORTANT NOTES:
+
+* Use these sites only for practice and learning purposes
+* Do NOT perform load testing on real production websites without permission
+* Avoid load testing real production sites (like Amazon, Flipkart, etc.) without permission—it can be illegal and may block your IP.
+* Start with small load and gradually increase users in JMeter
+* Always monitor response time, throughput, and error rate
+
+---
+
+DUMMY LOGIN APIs FOR JMETER (POST REQUEST TESTING)
+
+1. ReqRes Login API
+   URL: https://reqres.in/api/login
+   Method: POST
+
+Sample Request Body:
+{
+"email": "[eve.holt@reqres.in](mailto:eve.holt@reqres.in)",
+"password": "cityslicka"
+}
+
+Details:
+
+* Returns token on successful login
+* Returns error if password is missing or incorrect
+* Best for practicing success and failure scenarios
+
+---
+
+2. DummyJSON Login API
+   URL: https://dummyjson.com/auth/login
+   Method: POST
+
+Sample Request Body:
+{
+"username": "kminchelle",
+"password": "0lelplR"
+}
+
+Details:
+
+* Returns JWT token and user details
+* Supports multiple users
+* Good for authentication and load testing
+
+---
+
+3. FakeStoreAPI Login
+   URL: https://fakestoreapi.com/auth/login
+   Method: POST
+
+Sample Request Body:
+{
+"username": "mor_2314",
+"password": "83r5^_"
+}
+
+Details:
+
+* Simple authentication API
+* Returns token on success
+* Good for basic POST request testing
+
+---
+
+4. Restful Booker Auth API
+   URL: https://restful-booker.herokuapp.com/auth
+   Method: POST
+
+Sam
+

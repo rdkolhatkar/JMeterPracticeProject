@@ -544,6 +544,16 @@
           <stringProp name="TestPlan.comments">adds a normally distributed (bell-curve) random delay between requests to simulate realistic user think time instead of fixed pauses. </stringProp>
         </GaussianRandomTimer>
         <hashTree/>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">0</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>0.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">controls request execution speed to maintain a fixed number of requests per minute, ensuring a consistent load on the server.</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
