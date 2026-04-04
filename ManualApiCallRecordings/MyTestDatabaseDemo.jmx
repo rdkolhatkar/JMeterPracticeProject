@@ -5,6 +5,8 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
@@ -24,18 +26,50 @@
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">D:/JMeterPracticeProject/ApacheJMeter/ImportantTestData/TestDataForMyTestDB.csv</stringProp>
           <boolProp name="ignoreFirstLine">false</boolProp>
-          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="quotedData">true</boolProp>
           <boolProp name="recycle">true</boolProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
           <boolProp name="stopThread">false</boolProp>
           <stringProp name="variableNames">name,age</stringProp>
         </CSVDataSet>
         <hashTree/>
+        <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">// This BeanShell PreProcessor is used to CLEAN CSV input values
+// especially when the CSV file contains values wrapped in double quotes.
+// Example CSV:
+// &quot;John&quot;,&quot;25&quot;
+// Without this script, JMeter may pass values like &quot;&quot;John&quot;&quot; which breaks JSON.
+// Get values from JMeter variables (read from CSV Data Set Config)
+String name = vars.get(&quot;name&quot;);
+String age = vars.get(&quot;age&quot;);
+// Check if &apos;name&apos; is not null before processing
+if(name != null){
+    // Remove all double quotes from the name value
+    // Example: &quot;John&quot; -&gt; John
+    name = name.replace(&quot;\&quot;&quot;, &quot;&quot;);
+    
+    // Put the cleaned value back into JMeter variable
+    vars.put(&quot;name&quot;, name);
+}
+// Check if &apos;age&apos; is not null before processing
+if(age != null){
+    // Remove all double quotes from the age value
+    // Example: &quot;25&quot; -&gt; 25
+    age = age.replace(&quot;\&quot;&quot;, &quot;&quot;);
+    
+    // Store cleaned value back into JMeter variable
+    vars.put(&quot;age&quot;, age);
+}</stringProp>
+        </BeanShellPreProcessor>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="My Test DB POST API">
-          <stringProp name="TestPlan.comments">As our CSV file already contains the double quotes for data we need to replace them with below regex pattern</stringProp>
-          <stringProp name="HTTPSampler.domain">jsoning.com</stringProp>
+          <stringProp name="TestPlan.comments">Added &quot;Allow quoted data = True ✅&quot; setting in CSV Data Set Config and put [$name&quot;] variable in double quotation marks and put [${age}] without double quotation marks</stringProp>
+          <stringProp name="HTTPSampler.domain">jsonplaceholder.typicode.com</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
-          <stringProp name="HTTPSampler.path">/api/mytestdb</stringProp>
+          <stringProp name="HTTPSampler.path">/posts</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -45,7 +79,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;name&quot;: ${name},&#xd;
+  &quot;name&quot;: &quot;${name}&quot;,&#xd;
   &quot;age&quot;: ${age}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -54,12 +88,48 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor (Request Logging)">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">// Log request details BEFORE sending the request
+
+// Get HTTP Sampler details
+String url = sampler.getUrl().toString();
+String method = sampler.getMethod();
+String body = sampler.getArguments().getArgument(0).getValue();
+
+// Print in JMeter console (jmeter.log file)
+log.info(&quot;===== REQUEST START =====&quot;);
+log.info(&quot;URL: &quot; + url);
+log.info(&quot;Method: &quot; + method);
+log.info(&quot;Request Body: &quot; + body);
+log.info(&quot;===== REQUEST END =====&quot;);</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor (Response Logging)">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">// Log response details AFTER request execution
+
+response = prev.getResponseDataAsString();
+statusCode = prev.getResponseCode();
+
+log.info(&quot;===== RESPONSE START =====&quot;);
+log.info(&quot;Status Code: &quot; + statusCode);
+log.info(&quot;Response Body: &quot; + response);
+log.info(&quot;===== RESPONSE END =====&quot;);</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
-            <collectionProp name="Asserion.test_strings"/>
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49587">201</stringProp>
+            </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
-            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">1</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
