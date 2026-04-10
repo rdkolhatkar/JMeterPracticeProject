@@ -15,5 +15,14 @@ A session cookie is a small piece of data stored in the browser to remember a us
 3) This helps the server recognize that the requests are coming from the same logged-in user.
 4) Session cookies usually exist only while the browser is open.
 5) When you close the browser or log out, the session cookie is usually deleted.
-
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+What is correlation in JMeter and Why correlation is needed?
+1) Correlation = capturing dynamic value from server response and passing it to next request
+2) When you record a script in JMeter, it works fine once. But when you replay it, it may fail. Because websites use dynamic values like:
+   -> A) Session IDs
+   -> B) CSRF tokens
+   -> C) Auth tokens
+   These values change every time you run the application.
+3) Correlation in JMeter means capturing dynamic values (like session IDs or tokens) from a server response and reusing them in later requests so the test works every time.
+   Example: After login, server returns sessionId=ABC123. Next request must send it. Since it changes (XYZ789 next run), we extract it using a Regular Expression Extractor and use ${sessionId}.  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
