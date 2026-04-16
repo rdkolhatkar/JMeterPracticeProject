@@ -97,3 +97,12 @@ JMeter Controllers
 14) Module Controller is nothing but a container where we will store a reference to a reusable Test Fragment, it's a folder where we will point to our saved HTTP requests to reuse the same login or common flow across multiple Thread Groups.
 15) Recording Controller is nothing but a container where we will store all our recorded HTTP requests automatically, it's a folder where JMeter will save all our captured browser requests when we record a live session through the proxy.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Steps to execute JMeter Tests in Non GUI Mode 
+1) Open the JMeter bin directory "D:\JMeterPracticeProject\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin"
+2) Open the command prompt (administrator mode) or git bash at that location or copy the bin directory path and open it in command prompt (administrator mode) or git bash. 
+3) Then run the command : cd D:\JMeterPracticeProject\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin
+4) After navigating to the bin directory of JMeter, you can run the command called "jmeter" to start the JMeter UI 
+5) To run the JMeter in non GUI run the command "jmeter -n -t <Name of the Test .jmx file> -l <Path to reports directory>" Example: "jmeter -n -t BlazeDemoWebsiteProject.jmx -l D:\JMeterPracticeProject\Reports\results.jtl"
+6) Important Note: To run the JMeter project throght command line, you have to copy the project '.jmx' file into the same location where you have the 'ApacheJMeterTemporaryRootCA' Certificate
+7) Copy the "BlazeDemoWebsiteProject.jmx" file to location "D:\JMeterPracticeProject\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin" and then run this command  "jmeter -n -t BlazeDemoWebsiteProject.jmx -l D:\JMeterPracticeProject\Reports\results.jtl"
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
