@@ -25,4 +25,161 @@ What is correlation in JMeter and Why correlation is needed?
    These values change every time you run the application.
 3) Correlation in JMeter means capturing dynamic values (like session IDs or tokens) from a server response and reusing them in later requests so the test works every time.
    Example: After login, server returns sessionId=ABC123. Next request must send it. Since it changes (XYZ789 next run), we extract it using a Regular Expression Extractor and use ${sessionId}.  
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+JMeter Server Monitoring
+1) Host Server : A Host Server is the machine (physical or cloud server) where your website or API is deployed and running.
+   It stores your application code, processes incoming requests, sends responses back and may connect to database servers.
+   Example :
+   If your Spring Boot API is deployed on 'https://myapi.com' then the server running that application is the Host Server.
+   Below are the examples of popular Host Server:
+   A) Amazon Web Services EC2 — One of the most popular cloud-based virtual servers (IaaS). Widely used for hosting applications.
+   B) Microsoft Azure VM — Azure's Virtual Machine service, a direct competitor to AWS EC2, also an IaaS solution.
+   C) Google Cloud Run - This is not a traditional host server. It is a serverless container platform (PaaS), meaning you don't manage the underlying server directly. A more accurate Google Cloud equivalent to EC2/Azure VM would be Google Compute Engine (GCE). Cloud Run is better categorized under serverless/container hosting, not a traditional server.
+   D) On-Premise Linux Server — A traditional physical server hosted in your own data center or office. On-Premise Linux Server) running Red Hat Enterprise Linux is a very real and common enterprise setup.
+2) Client : A Client is the system that sends requests to the server.
+   It can be browser (Chrome, Firefox), mobile app, frontend React app, Postman, another backend service, Selenium automation script, RestAssured test
+   Example : When you open 'https://amazon.com' your browser is the Client and it sends request 'GET /products' to the server.
+   People often say client server, but technically:
+   -> Client = requester
+   -> Server = responder
+   There is not usually a separate thing called “client server” in normal web hosting.
+   Sometimes they mean frontend server, application server, proxy server, depending on context.
+
+=======================================================================================================================
+                              HOST SERVER vs CLIENT - Complete Comparison
+=======================================================================================================================
+
+DEFINITIONS
+=======================================================================================================================
+| Aspect         | Host Server                                      | Client                                         |
+|----------------|--------------------------------------------------|------------------------------------------------|
+| Definition     | A machine (physical or cloud) that stores,       | Any device or application that sends a         |
+|                | runs and serves your application or API.         | request to the Host Server and consumes        |
+|                | It listens for incoming requests and sends       | the response returned by it.                   |
+|                | back responses.                                  |                                                |
+=======================================================================================================================
+
+EXAMPLES
+=======================================================================================================================
+| Aspect         | Host Server                                      | Client                                         |
+|----------------|--------------------------------------------------|------------------------------------------------|
+| Website        | Apache / Nginx server serving HTML files         | Browser (Chrome, Firefox, Safari)              |
+| API            | Spring Boot API running on AWS EC2               | React App / Mobile App / Postman               |
+| Cloud          | AWS EC2, Azure VM, Google Compute Engine         | Another microservice calling your API          |
+| On-Premise     | Linux Server in your data center                 | Frontend application consuming your API        |
+| Database       | MySQL / PostgreSQL Server                        | Spring Boot App querying the database          |
+=======================================================================================================================
+
+FUNCTIONS
+=======================================================================================================================
+| Aspect         | Host Server                                      | Client                                         |
+|----------------|--------------------------------------------------|------------------------------------------------|
+| Primary Job    | Listen for incoming requests on a port           | Initiate and send requests to the server       |
+| Processing     | Processes the request and executes logic         | Waits for the response from the server         |
+| Data           | Stores application code, files, data             | Displays or uses the data received             |
+| Communication  | Responds back to the client                      | Sends HTTP/HTTPS requests (GET, POST etc.)     |
+| Database       | Connects and queries the database                | Does not directly access the database          |
+| Availability   | Runs 24/7, always listening                      | Connects only when needed                      |
+=======================================================================================================================
+
+FEATURES
+=======================================================================================================================
+| Aspect         | Host Server                                      | Client                                         |
+|----------------|--------------------------------------------------|------------------------------------------------|
+| Who starts?    | Waits and listens (passive start)                | Initiates the communication (active start)     |
+| Location       | AWS, Azure, GCP, On-Premise Data Center          | User's browser, mobile device, another server  |
+| IP Address     | Has a fixed/static IP or domain name             | May have dynamic IP                            |
+| Port           | Listens on a specific port (e.g., 8080, 443)     | Uses a random port to send requests            |
+| Accessibility  | Accessible to multiple clients simultaneously    | Accesses one or more servers as needed         |
+| Security       | Manages firewalls, SSL certificates, auth        | Sends credentials/tokens in request headers    |
+| Scalability    | Can be scaled up/out to handle more traffic      | Independent of server scaling                  |
+=======================================================================================================================
+
+ROLES IN WEB & API HOSTING
+=======================================================================================================================
+| Aspect         | Host Server                                      | Client                                         |
+|----------------|--------------------------------------------------|------------------------------------------------|
+| In Website     | Serves HTML, CSS, JS files to browser            | Browser renders the received files             |
+| In REST API    | Processes API calls, returns JSON/XML            | React/Angular app or mobile app calls the API  |
+| In Microservice| Acts as service provider for other services      | Acts as service consumer calling other APIs    |
+| In Database    | Stores and manages data (MySQL, PostgreSQL)      | Application server querying the database       |
+=======================================================================================================================
+
+REAL WORLD EXAMPLE
+=======================================================================================================================
+
+  WEBSITE HOSTING:
+  ----------------
+  User opens Chrome and types www.amazon.com
+        |
+        |  (Client = Chrome Browser)
+        |  Sends HTTP GET Request
+        v
+  Amazon Web Server (Host Server running on AWS)
+        |
+        |  Processes request
+        |  Fetches HTML, CSS, JS files
+        v
+  Sends response back to browser
+        |
+        v
+  Browser (Client) renders and displays the Amazon website
+
+-----------------------------------------------------------------------------------------------------------------------
+
+  API HOSTING:
+  ------------
+  User clicks "Get Orders" button in React App
+        |
+        |  (Client = React Application)
+        |  Sends HTTP GET /api/orders request
+        v
+  Spring Boot API Server (Host Server running on EC2)
+        |
+        |  Processes request
+        |  Queries MySQL Database
+        |  Builds JSON response
+        v
+  Sends JSON response back to React App
+        |
+        v
+  React App (Client) displays the list of orders on screen
+
+=======================================================================================================================
+
+IMPORTANT NOTE - A Server Can Be BOTH Host and Client
+=======================================================================================================================
+
+  React App  ──────►  Spring Boot API  ──────►  MySQL Database
+  (Client)            (Host Server               (Host Server
+                       for React App)             for Spring Boot)
+                      +
+                      (Client for
+                       MySQL Database)
+
+  - Spring Boot API is a HOST SERVER when React App calls it
+  - Spring Boot API is a CLIENT when it calls the MySQL Database
+  - Role depends on the context of communication
+
+=======================================================================================================================
+
+QUICK SUMMARY
+=======================================================================================================================
+| Point          | Host Server                                      | Client                                         |
+|----------------|--------------------------------------------------|------------------------------------------------|
+| Simple meaning | The one that SERVES / PROVIDES                   | The one that REQUESTS / CONSUMES               |
+| Who listens?   | Host Server always listens                       | Client initiates                               |
+| Who responds?  | Host Server sends the response                   | Client receives the response                   |
+| Can swap role? | Yes, can be client for another server            | Yes, can host something for another client     |
+=======================================================================================================================
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
